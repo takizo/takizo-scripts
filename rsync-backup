@@ -1,0 +1,26 @@
+#!/usr/local/bin/bash
+
+#with NO SLASH following e.g.( /etc /var /root /home ) AND NOT ( /etc/ /home/ ) !!!!!
+dirlist=( /root /etc /var/cron/tabs /database /var/db/pkg /backup/mysql )
+dirclash=/usr/local/etc
+destfolderclash=usr-local-etc
+
+destserver=10.0.1.23
+destfolder=$(hostname)
+logfile=/var/log/backup.log
+
+echo -n >> $logfile
+echo -n >> $logfile
+echo -n >> $logfile
+echo -n >> $logfile
+echo -n >> $logfile
+
+date >> $logfile
+
+for i in ${dirlist[@]};
+do
+        echo syncing directory $i ... >> $logfile
+	/usr/local/bin/rsync -av --delete --progress --bwlimit=10000 --copy-links --log-file=$logfile -e 'ssh -p 2323' $i transporter@$destserver:~/rsync/$destfolder/
+done
+
+/usr/local/bin/rsync -av --delete --progress --bwlimit=10000--copy-links --log-file=$logfile -e 'ssh -p 2323' $dirclash transporter@$destserver:~/rsync/$destfolder/$destfolderclash/

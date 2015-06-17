@@ -1,0 +1,22 @@
+#!/usr/local/bin/bash
+
+LOGFILE=/root/script/$0.log
+
+
+i=2
+while [ $i -gt 1 ];
+do
+	echo -e >> $LOGFILE
+	echo -e >> $LOGFILE
+	echo -e >> $LOGFILE
+
+	date >> $LOGFILE
+	echo exim >> $LOGFILE
+	ps aux | grep -i exim  | wc -l >> $LOGFILE
+	echo ------------- >> $LOGFILE
+	echo spam >> $LOGFILE
+	ps aux | grep -i spam | wc -l >> $LOGFILE
+
+	let i=$i+1
+	sleep 120
+done

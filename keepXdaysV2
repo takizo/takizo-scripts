@@ -1,0 +1,70 @@
+#!/usr/local/bin/bash
+
+if test "$1" = ""
+then
+        echo "usage: $0 directory-of-backup-files number-of-days-to-keep"
+        exit 1
+fi
+
+if test "$2" = ""
+then
+        echo "usage: $0 directory-of-backup-files number-of-days-to-keep"
+        exit 1
+fi
+
+if test "$3" != ""
+then
+        echo "usage: $0 directory-of-backup-files number-of-days-to-keep"
+        exit 1
+fi
+
+# backupdir=/mail/backup
+backupdir=$1
+daystokeep=$2
+currentdate=`date +%Y%m%d`
+archivedate=`echo $(($currentdate - $daystokeep))`
+myhostname=$(hostname)
+logfile=$0.log
+count=1
+
+echo -e >> $logfile
+echo -e >> $logfile
+echo -e >> $logfile
+echo -e >> $logfile
+echo -e >> $logfile
+echo " ----- $currentdate ----- " >> $logfile
+echo "list of directories BEFORE script run, are :" >> $logfile
+ls $backupdir >> $logfile
+echo -e >> $logfile
+
+
+for i in $(ls -rld $backupdir/20* | awk '{print $9}');
+do
+        list[$count]=$i >> $logfile
+        let "count += 1" >> $logfile
+done
+
+echo "$daystokeep days of backup will be kept and the rest deleted, see below : " >> $logfile
+
+while (($count > $daystokeep));
+do
+        echo "${list[$count]} will be DELETED !!!" >> $logfile
+        rm -rf ${list[$count]} >> $logfile
+        let "count -= 1"
+done
+
+
+echo -e >> $logfile
+echo -e >> $logfile
+echo "list of directories AFTER script runned, are : " >> $logfile
+ls $backupdir >> $logfile
+echo -e >> $logfile
+echo -e >> $logfile
+
+df -h >> $logfile
+
+echo " ----- $currentdate ----- " >> $logfile
+
+mail -s "list of backup directories in $backupdir of $myhostname" paul@globaltransit.net < $logfile
+
+

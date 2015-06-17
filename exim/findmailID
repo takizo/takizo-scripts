@@ -1,0 +1,19 @@
+#!/usr/local/bin/bash
+
+MAILID=somsak.saki
+OUTPUTLOG=./$MAILID.log
+LOGFILES=./mainlog
+
+echo -e > $OUTPUTLOG
+
+echo ------------------------- $LOGFILES ------------------------------------ >> $OUTPUTLOG
+grep -B 20 -A 20 -i $MAILID $LOGFILES >> $OUTPUTLOG
+echo ------------------------- $LOGFILES ------------------------------------ >> $OUTPUTLOG
+
+for LIST in $(ls $LOGFILES.*);
+do
+        echo ------------------------- $LIST ------------------------------------ >> $OUTPUTLOG
+        zcat $LIST | grep -B 20 -A 20 -i $MAILID >> $OUTPUTLOG
+        echo ------------------------- $LIST ------------------------------------ >> $OUTPUTLOG
+done
+

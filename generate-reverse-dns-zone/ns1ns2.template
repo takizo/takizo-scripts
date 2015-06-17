@@ -1,0 +1,8 @@
+zone "###IP###.28.223.in-addr.arpa" in {
+        type slave;
+        file "slave/named.rev.###IP###.28.223";
+        allow-transfer { none; };
+        masters { 10.10.10.88; };
+};
+
+

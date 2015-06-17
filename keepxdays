@@ -1,0 +1,64 @@
+#!/usr/local/bin/bash
+
+currentdate=`date +%Y%m%d`
+archivedate=`echo $(($currentdate - $daystokeep))`
+myhostname=$(hostname)
+#logfile=/root/script/keepXdays.log
+logfile=./$0.log
+count=1
+
+echo -e >> $logfile
+echo -e >> $logfile
+echo -e >> $logfile
+echo -e >> $logfile
+echo -e >> $logfile
+echo " ----- $currentdate ----- " >> $logfile
+echo "list of directories BEFORE script run, are :" >> $logfile
+ls $backupdir >> $logfile
+echo -e >> $logfile
+
+
+for i in $(ls -rld $backupdir/$filepattern* | awk '{print $9}');
+do
+        list[$count]=$i >> $logfile
+        let "count += 1" >> $logfile
+done
+
+echo "$daystokeep days of backup will be kept and the rest deleted, see below : " >> $logfile
+
+while (($count > $daystokeep));
+do
+        echo "${list[$count]} will be DELETED !!!" >> $logfile
+        #rm -rf ${list[$count]} >> $logfile
+        let "count -= 1"
+done
+
+echo -e >> $logfile
+echo -e >> $logfile
+echo "list of directories AFTER script runned, are : " >> $logfile
+ls $backupdir >> $logfile
+echo -e >> $logfile
+echo -e >> $logfile
+
+df -h >> $logfile
+
+echo " ----- $currentdate ----- " >> $logfile
+
+#mail -s "list of backup directories in $backupdir of $myhostname" edward.tan@globaltransit.net < $logfile
+
+daystokeep=90
+logsDir=/web
+
+filepattern=access
+for logDir in $(find $logsDir -type d -iname $filepattern);
+do
+	keeponly $logDir $filepattern $days
+done
+
+filepattern=error
+for logDir in $(find $logsDir -type d -iname $filepattern);
+do
+	keeponly $logDir $filepattern $days
+done
+
+

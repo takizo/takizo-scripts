@@ -1,0 +1,38 @@
+#!/usr/local/bin/bash
+
+getdiskutilz=$(df -h | grep -i \/dev\/.d | cut -b 39-41)
+getinodeutilz=$(df -hi | grep -i \/dev\/.d | cut -b 61-63)
+recipient=sysadm@globaltransit.net
+
+typeset -i warning=80
+typeset -i critical=90
+
+for diskpercentage in $getdiskutilz;
+do
+        typeset -i diskpercentage
+        if [ $diskpercentage -gt $critical ];
+        then    
+                df -h | mail -s "$(hostname) - More then ONE partition DISK is above the $critical% !!! it means very CRITICAL !!! SEE BELOW" $recipient;
+        else
+        if [ $diskpercentage -gt $warning ];
+        then    
+                df -h | mail -s "$(hostname) - More then ONE partition DISK is above the $warning% threshold! See below" $recipient;
+        fi
+        fi
+done
+
+
+for inodepercentage in $getinodeutilz;
+do
+        typeset -i inodepercentage
+        if [ $inodepercentage -gt $critical ];
+        then    
+                df -hi | mail -s "$(hostname) - More then ONE partition INODES is above the $critical% !!! it means very CRITICAL !!! SEE BELOW" $recipient;
+        else
+        if [ $inodepercentage -gt $warning ];
+        then    
+                df -hi | mail -s "$(hostname) - More then ONE partition INODES is above the $warning% threshold! See below" $recipient;
+        fi
+        fi
+done
+

@@ -1,0 +1,22 @@
+#!/usr/local/bin/bash
+
+dbHost=localhost
+dbPassword=jX5L2CGy5ms4ptVJ
+userName=transporter
+currentDate=$(date +%Y%m%d)
+backupDir=./$currentDate-v2
+logFile=./dump-mysql-v2.log
+
+# /root/edward-work/script/keepXdaysV2 /backup/mysql 21 >> $logFile
+
+mkdir -p ./$currentDate-v2 >> $logFile
+
+for i in $(mysql -u $userName -h $dbHost --silent -Ne "show databases;" -p$dbPassword);
+do
+	/usr/local/bin/mysqldump --create-options --log-error=$logFile -u $userName -h $dbHost -p$dbPassword $i >> $backupDir/$i-$currentDate.sql
+done
+
+
+
+
+#mysql -u edward -h localhost --silent -Ne "show databases;" -p

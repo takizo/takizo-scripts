@@ -1,0 +1,48 @@
+#!/usr/local/bin/bash
+
+dbHost=localhost
+dbPassword=jX5L2CGy5ms4ptVJ
+userName=transporter
+currentDate=$(date +%Y%m%d)
+myhostname=$(hostname)
+backupDir=/backup/pgsql/$currentDate
+logFile=/var/log/$0.log
+
+PG_DUMP=$(which pg_dump)
+TAR=$(which tar)
+
+/root/script/keepXdaysV2 /backup/pgsql 21 >> $logFile
+
+mkdir -p $backupDir >> $logFile
+
+for i in $(psql -U transporter -lt | sed -e '/^$/d' | awk '{ print $1 }' | grep -v template. | grep -v postgres);
+do
+	$PG_DUMP -U $userName $i >> $backupDir/$i-$currentDate.sql
+
+	typeset -i dumpStatus=$(echo $?)
+
+	if [ $dumpStatus -eq 0 ];
+	then
+		echo "$currentDate - The dump job for database $i is successful ... " >> $logFile
+		
+		$TAR zcf $backupDir/$i-$currentDate.sql.tar.gz $backupDir/$i-$currentDate.sql >> $logFile
+		
+		typeset -i tarStatus=$(echo $?)
+
+		if [ $tarStatus -eq 0 ];
+		then
+			echo "$currentDate - The tar job for database $i is successful ... " >> $logFile
+			
+			rm -rf $backupDir/$i-$currentDate.sql
+		else
+			echo "$currentDate - The tar job for database $i has FAILED ... " >> $logFile
+			
+			mail -s "the postgres compress job @ $myhostname failed for some reason on database $i ... check it out ..." paul@globaltransit.net < /dev/null
+		fi
+	else
+		echo "$currentDate - The dump job for database $i has FAILED ... " >> $logFile
+		
+		mail -s "the postgres backup job @ $myhostname failed for some reason on database $i ... check it out ..." paul@globaltransit.net < /dev/null
+	fi
+done
+
