@@ -1,0 +1,273 @@
+zone "paulooi.com" {
+  type master;
+  file "master/paulooi.com";
+};
+
+zone "takizo.com" {
+   type master;
+   file "master/takizo.com";
+   notify yes;	
+};
+
+zone "uglymen.net" {
+   type master;
+   file "master/uglymen.net";
+};
+
+zone "pensonic.com" {
+   type master;
+   file "master/pensonic.com";
+};
+
+zone "fonebud.com" {
+   type master;
+   file "master/fonebud.com";
+};
+
+zone "lebensstilkollektion.com" {
+   type master;
+   file "master/lebensstilkollektion.com";
+};
+
+zone "chanboonheng.com" {
+   type master;
+   file "master/chanboonheng.com";
+};
+
+zone "michael-one.com" {
+   type master;
+   file "master/michael-one.com";
+};
+
+zone "pensonic.info" {
+   type master;
+   file "master/pensonic.info";
+};
+
+zone "microtag.net" {
+   type master;
+   file "master/microtag.net";
+};
+
+zone "adv-studio.com" {
+   type master;
+   file "master/adv-studio.com";
+};
+
+zone "musegraphix.com" {
+   type master;
+   file "master/musegraphix.com";
+};
+
+zone "freebsd.org.my" {
+   type master;
+   file "master/freebsd.org.my";
+};
+
+zone "security.org.my" {
+   type master;
+   file "master/security.org.my";
+};
+
+zone "denzuko.net" {
+   type master;
+   file "master/denzuko.net";
+};
+
+zone "my-honeynet.org" {
+   type master;
+   file "master/my-honeynet.org";
+};
+
+zone "ayevie.com" {
+   type master;
+   file "master/ayevie.com";
+};
+
+zone "cornell.com.my" {
+  type master;
+  file "master/cornell.com.my";
+};
+
+zone "kollektion.com.my" {
+	type master;
+	file "master/kollektion.com.my";
+};
+
+zone "kollektionhaus.com" {
+	type master;
+	file "master/kollektionhaus.com";
+};
+
+zone "event-asia.com" {
+	type master;
+	file "master/event-asia.com";
+};
+
+zone "pleomalaysia.com" {
+        type master;
+        file "master/pleomalaysia.com";
+};
+
+zone "congjen.com" {
+	type master;
+	file "master/congjen.com";
+};
+
+
+
+zone "go128.net" {
+        type master;
+        file "master/go128.net";
+};
+
+zone "win228.net" {
+        type master;
+        file "master/win228.net";
+};
+
+zone "ag1111.com" {
+        type master;
+        file "master/ag1111.com";
+};
+
+zone "account2u.com" {
+        type master;
+        file "master/account2u.com";
+};
+
+zone "hackerspace.my" {
+        type master;
+        file "master/hackerspace.my";
+};
+
+zone "gltint.com" {
+	type master;
+	file "master/gltint.com";
+
+};
+
+zone "kooiling.com" {
+	type master;
+	file "master/kooiling.com";
+};
+
+zone "kitlimtimber.com" {
+        type master;
+        file "master/kitlimtimber.com";
+};
+
+zone "foreverlove.com.my" {
+        type master;
+        file "master/foreverlove.com.my";
+};
+
+zone "geekizo.com" {
+        type master;
+        file "master/geekizo.com";
+};
+
+zone "310kelvin.com" {
+        type master;
+        file "master/310kelvin.com";
+};
+
+zone "chiew.my" {
+   type master;
+   file "master/chiew.my";
+};
+
+zone "mynog.my" {
+	type master;
+	file "master/mynog.my";
+};
+
+zone "mpsoap.my" {
+  type master;
+  file "master/mpsoap.my";
+};
+
+zone "mynog.org" {
+  type master;
+  file "master/mynog.org";
+};
+
+zone "yaikthua.com" {
+   type master;
+   file "master/yaikthua.com";
+};
+
+zone "haileyooi.com" {
+   type master;
+   file "master/haileyooi.com";
+};
+
+zone "glamsmile.com.my" {
+   type master;
+   file "master/glamsmile.com.my";
+};
+
+zone "security.my" {
+   type master;
+   file "master/security.my";
+};
+
+zone "unityco.net" {
+   type master;
+   file "master/unityco.net";
+};
+
+zone "inhomedesign.com.my" {
+   type master;
+   file "master/inhomedesign.com.my";
+};
+
+zone "letv.my" {
+   type master;
+   file "master/letv.my";
+};
+
+zone "globalline.my" {
+   type master;
+   file "master/globalline.my";
+};
+
+zone "yota.my" {
+   type master;
+   file "master/yota.my";
+};
+
+zone "yota.com.my" {
+   type master;
+   file "master/yota.com.my";
+};
+
+zone "yota.net.my" {
+   type master;
+   file "master/yota.net.my";
+};
+
+zone "globalline.com.my" {
+   type master;
+   file "master/globalline.com.my";
+};
+
+zone "globalline.net.my" {
+   type master;
+   file "master/globalline.net.my";
+};
+
+zone "techdos.com.my" {
+   type master;
+   file "master/techdos.com.my";
+};
+
+zone "royalregent.com.my" {
+   type master;
+   file "master/royalregent.com.my";
+};
+
+zone "abc-cooking.my" {
+   type master;
+   file "master/abc-cooking.my";
+};

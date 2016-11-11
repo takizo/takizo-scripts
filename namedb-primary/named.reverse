@@ -1,0 +1,6 @@
+zone "56.230.103.in-addr.arpa" IN {
+	type master;
+	file "reverse/56.230.103.in-addr.arpa";
+	
+	allow-update { none; };
+};

@@ -1,0 +1,16 @@
+$TTL 1800
+$ORIGIN 56.230.103.in-addr.arpa.
+
+@	IN SOA  snoopy.dnsservo.com. support.takizo.com. (
+        		2013091933		; serial
+        		12h              	; Refresh
+        		15m               	; Retry
+        		3w               	; Expire
+        		3h              	; Minimum
+			)
+			IN NS	snoopy.dnsservo.com.
+			IN NS 	ns2.dnsservo.com.
+
+10		IN	PTR	abc.takizo.com.
+11		IN	PTR	def.takizo.com.
+12		IN	PTR	ghi.takizo.com.
