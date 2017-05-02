@@ -2,6 +2,7 @@
 
 ## Submit SPAM email which forwarded to antispam@<domain.com>
 ## Mailbox running Maildir format
+## Server is running Centos 6 with Amavis-new
 
 
 # Submit email to learn with bayes
