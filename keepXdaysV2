@@ -26,6 +26,7 @@ archivedate=`echo $(($currentdate - $daystokeep))`
 myhostname=$(hostname)
 logfile=$0.log
 count=1
+NOTIFYEMAIL=abc@gmail.com
 
 echo -e >> $logfile
 echo -e >> $logfile
@@ -65,6 +66,6 @@ df -h >> $logfile
 
 echo " ----- $currentdate ----- " >> $logfile
 
-mail -s "list of backup directories in $backupdir of $myhostname" paul@globaltransit.net < $logfile
+mail -s "list of backup directories in $backupdir of $myhostname" ${NOTIFYEMAIL} < $logfile
 
 
