@@ -1,12 +1,13 @@
 #!/usr/local/bin/bash
 
-LOGFILE=/root/script/$0.log
+### This script is meant for FreeBSD system
+### Bash executable and date function may different from Linux system
 
+LOGFILE=/root/script/$0.log
 
 i=2
 while [ $i -gt 1 ];
 do
-	echo -e >> $LOGFILE
 	echo -e >> $LOGFILE
 	echo -e >> $LOGFILE
 
