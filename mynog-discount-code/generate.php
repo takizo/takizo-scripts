@@ -1,5 +1,5 @@
 <?php
-function generateRandomString($length = 10) {
+function generateRandomString($length = 11) {
     $characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
     $charactersLength = strlen($characters);
     $randomString = 'IXNOGCONF-';
@@ -13,6 +13,6 @@ function generateRandomString($length = 10) {
 
 for ($d=0; $d<100; $d++)
 {
-	echo generateRandomString(6)."\n";
+	echo generateRandomString(5)."\n";
 }
 ?>
